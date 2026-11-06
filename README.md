@@ -1,7 +1,7 @@
 # GA-HistEQ
 A Python image processing application for automatic greyscale image contrast enhancement by optimizing histogram equalization with a Genetic Algorithm.
 
-![Application Screenshot](screenshot.png)
+![Application Screenshot](GA-HistEQ.png)
 
 ## Features
 
