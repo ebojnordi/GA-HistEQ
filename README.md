@@ -33,37 +33,16 @@ This representation keeps the mapping within the valid grayscale intensity range
 The fitness of each chromosome is evaluated using edge information from the resulting enhanced image:
 
 
-\[
-\mathrm{fitness}(X) =
-\log(\log(E(I(X)))) \times n_{\mathrm{edges}}(I(X))
-\]
+`fitness(X) = log(log(E(I(X)))) * n_edges(I(X))`
+
 
 **Where:**
 
-- \(X\) is a chromosome representing a candidate grayscale mapping.
-- \(I(X)\) is the enhanced image obtained by applying chromosome \(X\) to the original image.
-- \(E(I(X))\) is the total edge intensity of the enhanced image.
-- \(n_{\text{edges}}(I(X))\) is the number of detected edge pixels.
+- `X` is a chromosome representing a candidate grayscale mapping.
+- `I(X)` is the enhanced image obtained by applying chromosome `X` to the original image.
+- `E(I(X))` is the total edge intensity of the enhanced image.
+- `n_edges(I(X))` is the number of detected edge pixels.
 
-#### Edge Intensity
-
-The total edge intensity is calculated as:
-
-\[
-E(I(X)) =
-\sum_x \sum_y
-\sqrt{
-\delta h_1(x,y)^2 +
-\delta v_1(x,y)^2
-}
-\]
-
-Where:
-
-- \(\delta h_1(x,y)\) represents the horizontal gradient component.
-- \(\delta v_1(x,y)\) represents the vertical gradient component.
-
-These gradient components are calculated using Sobel-like operators. Higher edge intensity indicates stronger image gradients and potentially more pronounced image details.
 
 #### Rationale Behind the Fitness Function
 
@@ -72,9 +51,6 @@ The fitness function combines two measures of image quality:
 - **Number of edge pixels:** Rewards mappings that produce more detectable edges in the enhanced image.
 - **Total edge intensity:** Rewards mappings that produce stronger gradients and more pronounced edges.
 
-The double logarithmic transformation, \(\log(\log(E))\), reduces the influence of extremely large edge-intensity values on the fitness score.
-
-By combining these measures, the Genetic Algorithm searches for a grayscale mapping that enhances image contrast and emphasizes visual details.
 
 ### 3. Genetic Operators
 
